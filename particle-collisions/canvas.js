@@ -1,6 +1,7 @@
 var canvas=document.querySelector("canvas")
 canvas.width=window.innerWidth
 canvas.height=window.innerHeight
+canvas.style.background='black'
 
 let c=canvas.getContext("2d")
 
@@ -124,10 +125,21 @@ class circle{
 }
 
 //functionality
+total=200
+
+if(canvas.width<500){
+    total=100
+}
+else if(canvas.width<300){
+    total=50
+}
+else if(canvas.width<800){
+    total=150
+}
 let carr=[]
 function init(){
     carr=[]
-    for(let i=0;i<200;i++){
+    for(let i=0;i<total;i++){
         let radius=randomnumber(4,20)
         let x=randomnumber(radius,window.innerWidth-radius)
         let y=randomnumber(radius,window.innerHeight-radius)
