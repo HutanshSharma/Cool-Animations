@@ -99,7 +99,7 @@ class circle{
         c.restore()
         c.strokeStyle=this.color
         c.stroke()
-        if (finddistance(this.x, mouse.x, this.y, mouse.y)<100 && this.opacity<0.5) {
+        if (finddistance(this.x, mouse.x, this.y, mouse.y)<200 && this.opacity<0.5) {
             this.opacity+=0.01;
             if (this.opacity>0.5) this.opacity=0.5;
         } else {
