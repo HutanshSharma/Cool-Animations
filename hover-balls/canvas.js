@@ -73,8 +73,8 @@ function init(){
     let radius=Math.random()*5+1
     let x=Math.random()*(window.innerWidth-radius)+radius
     let y=Math.random()*(window.innerHeight-radius)+radius
-    let dx=(Math.random())
-    let dy=(Math.random())
+    let dx=Math.random()*0.5
+    let dy=Math.random()*0.5
     let color=randcolor()
     carr.push(new circle(x,y,dx,dy,radius,color))
 }
