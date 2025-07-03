@@ -17,7 +17,8 @@ let increment=frequency.value/1000
 window.addEventListener("resize",()=>{
     canvas.width=window.innerWidth
     canvas.height=window.innerHeight
-    animate()
+    increment=frequency.value/1000
+    c.clearRect(0,0,canvas.width,canvas.height)
 })
 
 //functions
