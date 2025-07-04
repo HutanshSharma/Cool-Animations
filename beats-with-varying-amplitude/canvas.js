@@ -6,7 +6,7 @@ let c=canvas.getContext('2d')
 let frequency=0.01
 let amplitude=100
 let increment=frequency
-let wavelength=140
+let wavelength=100
 
 //eventlisteners
 window.addEventListener("resize",()=>{

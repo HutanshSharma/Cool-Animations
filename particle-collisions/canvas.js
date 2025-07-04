@@ -4,6 +4,7 @@ canvas.height=window.innerHeight
 canvas.style.background='black'
 
 let c=canvas.getContext("2d")
+let hoverradius=200
 
 //functions
 function randcolor(){
@@ -18,9 +19,7 @@ function randomnumber(max,min){
 }
 
 function finddistance(x1,x2,y1,y2){
-    let xdis=Math.pow(x1-x2,2)
-    let ydis=Math.pow(y1-y2,2)
-    return Math.pow(xdis+ydis,1/2)
+    return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
 }
 
 function findcompresultant(theta,particle){
@@ -70,10 +69,14 @@ canvas.addEventListener("mousemove",(e)=>{
     mouse.y=e.y
 })
 
-window.addEventListener("resize",()=>{
-    canvas.width=window.innerWidth
-    canvas.height=window.innerHeight
-    init()
+let resizeTimer
+window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer)
+    resizeTimer=setTimeout(() => {
+        canvas.width=window.innerWidth
+        canvas.height=window.innerHeight
+        init()
+    },200)
 })
 
 //circle class
@@ -99,7 +102,7 @@ class circle{
         c.restore()
         c.strokeStyle=this.color
         c.stroke()
-        if (finddistance(this.x, mouse.x, this.y, mouse.y)<200 && this.opacity<0.5) {
+        if (finddistance(this.x, mouse.x, this.y, mouse.y)<hoverradius && this.opacity<0.5) {
             this.opacity+=0.01;
             if (this.opacity>0.5) this.opacity=0.5;
         } else {
@@ -120,22 +123,19 @@ class circle{
         this.x+=this.dx
         this.y+=this.dy
     }
-    event(){
-    }
 }
 
 //functionality
-total=200
+let total=60
 
-if(canvas.width<500){
+if(window.innerWidth>900){
+    total=200
+}
+else if(window.innerWidth>500){
     total=100
+    hoverradius=100
 }
-else if(canvas.width<300){
-    total=50
-}
-else if(canvas.width<800){
-    total=150
-}
+
 let carr=[]
 function init(){
     carr=[]
@@ -171,3 +171,4 @@ function animate(){
 
 init()
 animate()
+console.log(total)

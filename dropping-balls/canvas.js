@@ -11,6 +11,10 @@ window.addEventListener("resize",()=>{
     init()
 })
 
+window.onclick=()=>{
+    init()
+}
+
 function randcolor(){
     let r=Math.round(Math.random()*255)
     let g=Math.round(Math.random()*255)
